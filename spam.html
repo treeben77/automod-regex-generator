@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    <div class="header">
+        <a href="/templates/index.html">AutoMod Regex Generator</a>
+        <div class="pages">
+            <a href="/templates/spam.html">Spam</a>
+        </div>
+    </div>
+    <div class="content">
+        Block messages with zalgo, too many emojis and too many newlines!
+        <div class="spam-type">
+            <a class="spam-name">Zalgo</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Zalgo text is designed to make the message obfucated, and be very annoying for other members. (e.g. h̵̅ͅȇ̴̫l̸͇͌l̸̝͛ȍ̴̱) </p>
+                    <div class="setting">
+                        <input type="checkbox" id="filter-accents"> Filter Accents
+                        <p>When disabled, messages with accents will be allowed (e.g. héllo) but this can also cause some false negatives.</p>
+                    </div>
+                </div>
+                <div class="grid-item grid-item-right">
+                    ...And here's your regex!<br><br>
+                    <a class="regex-output" id="regex-output-zalgo">
+                        \p{M}{3,}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="spam-type">
+            <a class="spam-name">Emoji Spam</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Prevents emoji spam in messages by setting a limit for each message.</p>
+                    <div class="setting">
+                        Maximum Allowed Emojis<br>
+                        <a id="emoji-range-value">0<a></a> <input type="range" id="emoji-range" min="0" max="12" value="6">
+                        <p>Maximum number of standarad and custom emojis per message. The highest possible is 12 due to Discord limitations.</p>
+                    </div>
+                </div>
+                <div class="grid-item grid-item-right">
+                    ...And here's your regex!<br><br>
+                    <a class="regex-output" id="regex-output-emoji">
+                        (?s)((<a?:[a-z_0-9]+:[0-9]+>|\p{Extended_Pictographic}).*){2,}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="spam-type">
+            <a class="spam-name">Newline Spam</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Limits the number of newlines per mesage. Note that newlines and lines are not the same.</p>
+                    <div class="setting">
+                        Maximum Allowed Newlines<br>
+                        <input type="number" id="max-newlines" value="5">
+                        <p>Maxiumum number of newlines per message.</p>
+                    </div>
+                </div>
+                <div class="grid-item grid-item-right">
+                    ...And here's your regex!<br><br>
+                    <a class="regex-output" id="regex-output-newline">
+                        (\n.*){6,}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script src="/static/spam.js"></script>
+    </div>
+</body>
