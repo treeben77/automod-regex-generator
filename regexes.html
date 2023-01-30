@@ -14,11 +14,29 @@
     </div>
     <div class="content">
         Block messages with zalgo, too many emojis and too many newlines, and more!
-        <div class="spam-type">
+        <div class="spam-type" id="links">
+            <a class="spam-name">All Links</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Blocks all links. You should use this with allow keywords.</p>
+                    <div class="setting">
+                        <input type="checkbox" id="include-nonclickable" checked> Include Non-Clickable Links
+                        <p>When enabled, this will block links without the <code>https://</code> but this can also cause some false negatives.</p>
+                    </div>
+                </div>
+                <div class="grid-item grid-item-right">
+                    ...And here's your regex!<br><br>
+                    <a class="regex-output" id="regex-output-links">
+                        [a-z0-9\.]{2,}\.[a-z0-9]{2,18}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="spam-type" id="zalgo">
             <a class="spam-name">Zalgo</a>
             <div class="grid-row">
                 <div class="grid-item">
-                    <p>Zalgo text is designed to make the message obfucated, and be very annoying for other members. (e.g. h̵̅ͅȇ̴̫l̸͇͌l̸̝͛ȍ̴̱) </p>
+                    <p>Zalgo text is designed to make the message obfucated, and be very annoying for other members. (e.g. h̵̅ͅȇ̴̫l̸͇͌l̸̝͛ȍ̴̱) <a id="warning-description">Some complex emojis will be blocked.</a></p>
                     <div class="setting">
                         <input type="checkbox" id="filter-accents"> Filter Accents
                         <p>When disabled, messages with accents will be allowed (e.g. héllo) but this can also cause some false negatives.</p>
@@ -32,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="spam-type">
+        <div class="spam-type" id="emoji-spam">
             <a class="spam-name">Emoji Spam</a>
             <div class="grid-row">
                 <div class="grid-item">
@@ -51,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="spam-type">
+        <div class="spam-type" id="newline-spam">
             <a class="spam-name">Newline Spam</a>
             <div class="grid-row">
                 <div class="grid-item">

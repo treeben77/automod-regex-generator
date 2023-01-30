@@ -2,10 +2,12 @@ const outputZalgo = document.getElementById("regex-output-zalgo");
 const outputEmojiValue = document.getElementById("emoji-range-value");
 const outputEmoji = document.getElementById("regex-output-emoji");
 const outputNewln = document.getElementById("regex-output-newline");
+const outputLinks = document.getElementById("regex-output-links");
 
 const checkbox_acc = document.getElementById("filter-accents");
 const emoji_slider = document.getElementById("emoji-range");
 const max_newlines = document.getElementById("max-newlines");
+const inc_nonclick = document.getElementById("include-nonclickable");
 
 
 function updateRegexZalgo() {
@@ -33,3 +35,14 @@ function updateRegexNewln() {
 }
 max_newlines.onchange = updateRegexNewln;
 max_newlines.oninput = updateRegexNewln;
+
+function updateRegexLinks() {
+    if (inc_nonclick.checked) {
+        outputLinks.innerText = "[a-z0-9\\.]{2,}\\.[a-z0-9]{2,18}";
+    } else {
+        outputLinks.innerText = "https?://[a-z0-9\\.]{2,}\\.[a-z0-9]{2,18}";
+    };
+};
+
+inc_nonclick.onchange = updateRegexLinks;
+updateRegexLinks();
