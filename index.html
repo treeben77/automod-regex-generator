@@ -52,11 +52,15 @@
         <div class="grid-row">
             <div class="grid-item">
                 <input type="checkbox" id="whitespace"> Extra Whitespace
-                <p>Prevents adding spaces unnecessary. (e.g. he llo) This could make the regex really long</p>
+                <p>Prevents adding spaces unnecessary. (e.g. he llo) This could make the regex really long <a id="warning-description">This could cause false positives!</a></p>
             </div>
             <div class="grid-item">
                 <input type="checkbox" id="vowel-less"> Vowelless Variants
                 <p>Prevents removing the vowels. (e.g. hllo) <a id="warning-description">This could cause false positives!</a></p>
+            </div>
+            <div class="grid-item">
+                <input type="checkbox" id="part-match" checked> Partial Matches
+                <p>Prevents adding text to the start or end of word. (e.g. hello!) <a id="warning-description">This could cause false positives for some small words!</a></p>
             </div>
         </div>
 

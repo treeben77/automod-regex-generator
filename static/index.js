@@ -10,6 +10,7 @@ const checkbox_dub = document.getElementById("double-spm")
 const checkbox_mul = document.getElementById("multi-char")
 const checkbox_vow = document.getElementById("vowel-less")
 const checkbox_whi = document.getElementById("whitespace")
+const checkbox_pmc = document.getElementById("part-match")
 
 const numReplacers = {
     "i": ["1"],
@@ -24,15 +25,19 @@ const numReplacers = {
 };
 
 const symReplacers = {
-    "i": ["!", "|"],
-    "l": ["!", "|"],
-    "s": ["\\$"],
-    "h": ["\\|-\\|"],
-    "n": ["|\\|"],
-    "c": ["\\("],
-    "k": ["\\|<"],
     "a": ["@", "∆", "/-\\\\", "/_\\", "/\\", "Д"],
-    "b": ["|}", "|:", "|8", "ß", "ь"]
+    "b": ["|}", "|:", "|8", "ß", "ь"],
+    "c": ["\\("],
+    "f": ["ƒ"],
+    "h": ["\\|-\\|", "#", "}{"],
+    "i": ["!", "\\|"],
+    "j": ["ʝ"],
+    "k": ["\\|<"],
+    "l": ["!", "\\|"],
+    "n": ["|\\|"],
+    "s": ["\\$", "§"],
+    "x": ["><"],
+    "y": ["¥"]
 };
 
 const letReplacers = {
@@ -193,6 +198,10 @@ function updateRegex() {
         previous_charater_combo = 0;
         previous_charater_modified = false;
     };
+    if (!checkbox_pmc.checked) {
+        console.log("amogus")
+        end_text = `(\\A|\\s)${end_text}(\\z|\\s)`
+    }
 
     if (end_text.length > 260) {
         error_length.hidden = false
@@ -212,4 +221,5 @@ checkbox_mul.onchange = updateRegex
 checkbox_vow.onchange = updateRegex
 checkbox_whi.onchange = updateRegex
 checkbox_emo.onchange = updateRegex
+checkbox_pmc.onchange = updateRegex
 updateRegex()
