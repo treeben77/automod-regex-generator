@@ -38,9 +38,9 @@ max_newlines.oninput = updateRegexNewln;
 
 function updateRegexLinks() {
     if (inc_nonclick.checked) {
-        outputLinks.innerText = "(?:https?://)?[a-z0-9_\\-\\.]{2,}\\.[a-z]{2,}";
+        outputLinks.innerText = "(?:https?://)?[a-z0-9_\-\.]*[a-z0-9_\-]{2,}\.[a-z]{2,}";
     } else {
-        outputLinks.innerText = "(?:https?://)[a-z0-9_\\-\\.]{2,}\\.[a-z]{2,}";
+        outputLinks.innerText = "(?:https?://)[a-z0-9_\-\.]*[a-z0-9_\-]{2,}\.[a-z]{2,}";
     };
 };
 
