@@ -33,6 +33,7 @@ body {
     padding-right: 10px;
     border-radius: 8px;
 }
+
 .header .pages a:hover {
     background-color: #2a2a2aff;
 }
@@ -45,6 +46,7 @@ body {
     min-height: calc(100% - 140px);
     background-color: #2f3136;
     text-align: center;
+    width: calc(100% - 60px);
 }
 
 .link {
@@ -56,7 +58,7 @@ body {
     text-decoration: underline;
 }
 
-.content .text-input {
+.text-input {
     background-color: #202225;
     color: white;
     padding: 10px;
@@ -77,18 +79,19 @@ body {
 
 .content .grid-row {
     margin-top: 15px;
-    padding-bottom: 15px;
     margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     flex-basis: 33%;
     width: 100%;
     text-align: left;
+    margin-bottom: -10px;
 }
 
 .content .grid-item {
     flex-wrap: wrap;
     flex-basis: 33%;
+    padding-bottom: 25px;
 }
 
 .content .grid-item input {
@@ -144,11 +147,6 @@ body {
     font-size: 14px;
 }
 
-.grid-item .setting input[type=checkbox] {
-    height: 10px;
-    width: 10px;
-}
-
 .spam-type .grid-item .regex-output {
     color: white;
     background-color: #202225;
@@ -173,4 +171,135 @@ body {
     border-radius: 10px;
     height: 25px;
     width: 85px;
+}
+
+.grid-item .setting input[type=checkbox] {
+    height: 10px;
+    width: 10px;
+}
+
+@media (pointer:coarse) {
+    .content {
+        margin: 20px;
+        padding: 50px;
+        width: calc(100% - 140px);
+    }
+
+    .header a {
+        font-size: 14px;
+    }
+    
+    .header .pages {
+        float: right;
+        display: inline;
+        padding: 5px;
+        padding-right: 20px;
+    }
+    
+    .header .pages a {
+        font-size: 30px;
+        background-color: #2a2a2a00;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 8px;
+    }
+    
+    .text-input {
+        background-color: #202225;
+        color: white;
+        padding: 10px;
+        font-size: 40px;
+        border-style: none;
+        border-radius: 10px;
+        width: 60%;
+        height: 80px;
+    }
+
+    .content .grid-row {
+        padding-top: 40px;
+        margin: 10px auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 33%;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .content .grid-item {
+        flex-wrap: wrap;
+        flex-basis: 50%;
+        padding-bottom: 30px;
+        font-size: 40px;
+    }
+    
+    .content .grid-item input {
+        accent-color: #5865F2;
+        width: 32px;
+        height: 32px;
+    }
+        
+    .content .grid-item p {
+        font-size: 15px;
+    }
+
+    .content #regex-output {
+        font-size: 24px;
+    }
+
+    .spam-type {
+        padding: 50px;
+        padding-bottom: 0px;
+        margin: 0px;
+        border-radius: 10px;
+        width: calc(100% - 100px);
+    }
+
+    .content .grid-item p {
+        font-size: 30px
+    }
+
+    .grid-item .setting {
+        padding-top: 10px;
+        font-size: 40px;
+    }
+
+    .grid-item .setting p {
+        padding-top: 10px;
+        font-size: 30px;
+    }
+    
+    .spam-name {
+        font-size: 40px;
+        margin-bottom: -30px;
+    }
+
+    .spam-type .grid-item {
+        flex-wrap: nowrap;
+        flex-basis: none;
+        flex: none;
+        width: 100%;
+        padding-top: 5px;
+    }
+
+    #emoji-range-value {
+        width: 100px;
+        /* display: inline-block; */
+    }
+    
+    .spam-type .grid-item input[type=number] {
+        background-color: #202225;
+        color: white;
+        padding: 10px;
+        border-style: none;
+        border-radius: 10px;
+        height: 50px;
+        width: 200px;
+        font-size: 30px;
+    }
+    
+    .grid-item .setting input[type=checkbox] {
+        height: 32px;
+        width: 32px;
+    }
 }
