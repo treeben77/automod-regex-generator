@@ -1,12 +1,10 @@
 const outputZalgo = document.getElementById("regex-output-zalgo");
 const outputEmojiValue = document.getElementById("emoji-range-value");
 const outputEmoji = document.getElementById("regex-output-emoji");
-const outputNewln = document.getElementById("regex-output-newline");
 const outputLinks = document.getElementById("regex-output-links");
 
 const checkbox_acc = document.getElementById("filter-accents");
 const emoji_slider = document.getElementById("emoji-range");
-const max_newlines = document.getElementById("max-newlines");
 const inc_nonclick = document.getElementById("include-nonclickable");
 
 
@@ -29,12 +27,6 @@ function updateRegexEmoji() {
 emoji_slider.onchange = updateRegexEmoji
 emoji_slider.oninput = updateRegexEmoji
 updateRegexEmoji()
-
-function updateRegexNewln() {
-    outputNewln.innerText = `(\\n.*){${+max_newlines.value + 1},}`
-}
-max_newlines.onchange = updateRegexNewln;
-max_newlines.oninput = updateRegexNewln;
 
 function updateRegexLinks() {
     if (inc_nonclick.checked) {
