@@ -2,6 +2,7 @@
     <title>AutoMod Regex Generator</title>
     <meta property="og:title" content="AutoMod Regex Generator"/>
     <meta property="og:description" content="Quickly generate a regex for Discord's AutoMod that will protect your community from using leetspeak to bypass keyword rules."/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no"/>
 
     <link rel="stylesheet" href="static/main.css">
 </head>
@@ -21,8 +22,10 @@
         </div>
 
         <div class="step">
-            <p class="p-with-right-element">2. Change some settings to customize the regex.</p>
-            <button class="right-element" id="reset-settings">Reset Settings</button>
+            <div class="title-with-right-element">
+                <p>2. Change some settings to customize the regex.</p>
+                <button class="right-element" id="reset-settings">Reset Settings</button>
+            </div>
             <div class="grid-row">
                 <div class="grid-item">
                     <input type="checkbox" id="filter-num" checked> Number Variants

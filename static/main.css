@@ -18,7 +18,7 @@ body {
     align-items: center;
 }
 
-.header a {
+.header a, .header b {
     color: white;
     text-decoration: none;
 }
@@ -28,8 +28,7 @@ body {
     padding: 5px;
 }
 
-.header .pages a {
-    font-size: 16px;
+.header .pages a, .header .pages b {
     background-color: transparent;
     padding: 5px;
     padding-left: 10px;
@@ -37,7 +36,7 @@ body {
     border-radius: 8px;
 }
 
-.header .pages a:hover {
+.header .pages a:hover, .header .pages b:hover {
     background-color: #202020;
 }
 
@@ -59,9 +58,15 @@ body {
     margin-bottom: 10px;
 }
 
-.step .p-with-right-element {
+.step .title-with-right-element {
+    white-space: nowrap;
+}
+
+.step .title-with-right-element p {
     display: inline-block;
     vertical-align: middle;
+    white-space: normal;
+    width: calc(100% - 110px);
 }
 
 .step .right-element {
@@ -261,6 +266,7 @@ body {
     padding: 5px;
     font-family: 'Courier New', Courier, monospace;
     width: fit-content;
+    word-break: break-all;
     border-radius: 10px;
     margin: 0 2px;
 }
@@ -280,3 +286,36 @@ body {
     margin: 0 2px;
 }
 
+@media (pointer:coarse) {
+    .header {
+        padding: 15px;
+        padding-bottom: 0px;
+    }
+
+    .content {
+        padding: 15px;
+        padding-top: 0px
+    }
+
+    .grid-row {
+        flex-basis: 50%;
+        width: 100%;
+        text-align: left;
+        margin-bottom: -20px;
+    }
+    
+    .grid-item {
+        flex-wrap: wrap;
+        flex-basis: 50%;
+        padding-bottom: 25px;
+    }
+
+    .spam-type .grid-row {
+        display: inline-block;
+        margin-top: 0px;
+    }
+
+    .spam-type .grid-item {
+        width: 100%
+    }
+};
