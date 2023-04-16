@@ -167,7 +167,7 @@ function updateRegex() {
                 is_all_one_char = false
             } else if (/\p{Extended_Pictographic}/u.test(replacer)) {
                 //pass
-            } else if (replacer.length > 2) {
+            } else if (replacer.length > 1) {
                 replacers.splice(i2, 1)
                 i2--
             }
