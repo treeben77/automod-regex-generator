@@ -13,63 +13,83 @@
         </div>
     </div>
     <div class="content">
-        <p>Quickly generate a regex for Discord's AutoMod that will protect your community from using leetspeak to bypass keyword rules.</p>
+        <p>Generate regexes for Discord's AutoMod that will protect your community from using leetspeak to bypass AutoMod.</p>
         
-        <p>Start by inputing a keyword you'd like to be filtered with a regex.</p>
-        <input type="text" class="text-input" id="word-input" value="Hello World">
+        <div class="step">
+            <p>1. Insert a keyword you'd like to filter with a regex.</p>
+            <input type="text" class="text-input" id="word-input" value="Hello World">
+        </div>
 
-        <p>You can change some settings to customize the results if you'd like:</p>
-        <div class="grid-row">
-            <div class="grid-item">
-                <input type="checkbox" id="filter-num" checked> Number Variants
-                <p>Prevents character replacements using numbers. (e.g. he11o)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="filter-sym" checked> Symbol Variants
-                <p>Prevents character replacements using symbols. (e.g. he!!o)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="filter-let" checked> Letter Variants
-                <p>Prevents character replacements using different letters. (e.g. heiio)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="filter-emo" checked> Emoji Variants
-                <p>Prevents replacing a character with regional indicator emojis. (e.g. hell🅾️)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="double-spm" checked> Double-letter Spam
-                <p>Prevents spamming characters which are normally next to each other multiple times. (e.g. hellllo)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="multi-char"> Multi Character
-                <p>Prevents replacing a character with multiple. (e.g. |-|ello)</p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="whitespace"> Extra Whitespace
-                <p>Prevents adding spaces unnecessary. (e.g. he llo) This could make the regex really long <a id="warning-description">This could cause false positives!</a></p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="vowel-less"> Vowelless Variants
-                <p>Prevents removing the vowels. (e.g. hllo) <a id="warning-description">This could cause false positives!</a></p>
-            </div>
-            <div class="grid-item">
-                <input type="checkbox" id="part-match" checked> Partial Matches
-                <p>Prevents adding text to the start or end of word. (e.g. hello!) <a id="warning-description">This could cause false positives for some small words!</a></p>
+        <div class="step">
+            <p class="p-with-right-element">2. Change some settings to customize the regex.</p>
+            <button class="right-element" id="reset-settings">Reset Settings</button>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-num" checked> Number Variants
+                    <p>Prevents character replacements using numbers. (e.g. he11o)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-sym" checked> Symbol Variants
+                    <p>Prevents character replacements using symbols. (e.g. he!!o)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-let" checked> Letter Variants
+                    <p>Prevents character replacements using different letters. (e.g. heiio)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-emo" checked> Emoji Variants
+                    <p>Prevents replacing a character with regional indicator emojis. (e.g. hell🅾️)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="double-spm" checked> Double-letter Spam
+                    <p>Prevents spamming characters which are normally next to each other multiple times. (e.g. hellllo)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="multi-char"> Multi Character
+                    <p>Prevents replacing a character with multiple. (e.g. |-|ello)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="whitespace"> Extra Whitespace
+                    <p>Prevents adding spaces unnecessary. (e.g. he llo) This could make the regex really long and <a class="warning-description">this could cause false positives!</a></p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="vowel-less"> Vowelless Variants
+                    <p>Prevents removing the vowels. (e.g. hllo) <a class="warning-description">This could cause false positives!</a></p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="part-match" checked> Partial Matches
+                    <p>Prevents adding text to the start or end of word. (e.g. hello!) <a class="warning-description">This could cause false positives for some small words!</a></p>
+                </div>
             </div>
         </div>
 
-        <p>...And here's your regex!</p>
-        <div class="error-box" id="regex-error-toolong" hidden>
-            This Regex is too long! You need to shorten it by shorten the word or disabling some customizer settings, Double-letter Spam makes the regex smaller but everything else makes it longer.
+        <div class="step">
+            <p>3. Copy the generated regex!</p>
+            <div class="error-box" id="regex-error-toolong" hidden>
+                This Regex is too long! You need to shorten it by shorten the word or disabling some customizer settings, Double-letter Spam makes the regex smaller but everything else makes it longer.
+            </div>
+            <div class="regex-results">
+                <button id="copy-regex">Copy</button>
+                <a id="regex-output">
+                    h[e3]ll[o0] w[o0]rld
+                </a>
+            </div>
         </div>
-        <a id="regex-output">
-            h[e3]ll[o0] w[o0]rld
-        </a>
 
-        <p>Zalgo can bypass the regex. <a class="link" href="regexes.html">You can generate regexes for zalgo and other spam too!</a></p>
+        <p>You can also visit the <a class="link" href="regexes.html">Regexes page</a> to find regexes that block links, zalgo, and more.</p>
 
         <script src="static/index.js"></script>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            AutoMod Regex Generator
 
-        Made by <a class="link" href="https://linktr.ee/treeben77">TreeBen77#9066</a>, you can <a class="link" href="https://discord.gg/4CSc9E5uQy">join the Discord server</a> and <a class="link" href="https://github.com/TreeBen77/automod-regex-generator/issues">report issues on Github</a>. Not affiliated with Discord.
+            <p>© TreeBen77 2023. Not affiliated with Discord.</p>
+        </div>
+        <div class="footer-right">
+            <p>Made by <a class="link" href="https://linktr.ee/treeben77">TreeBen77#9066</a></p>
+            <p>Join the <a class="link" href="https://discord.gg/4CSc9E5uQy">Discord Server</a></p>
+            <p>View the source on <a class="link" href="https://github.com/TreeBen77/automod-regex-generator">GitHub</a></p>
+        </div>
     </div>
 </body>

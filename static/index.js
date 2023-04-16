@@ -1,6 +1,8 @@
 const output = document.getElementById("regex-output")
 const input = document.getElementById("word-input")
 const error_length = document.getElementById("regex-error-toolong")
+const reset_settings = document.getElementById("reset-settings")
+const copy_output = document.getElementById("copy-regex")
 
 const checkbox_num = document.getElementById("filter-num")
 const checkbox_sym = document.getElementById("filter-sym")
@@ -89,6 +91,8 @@ const emoReplacers = {
 };
 
 function updateRegex() {
+    copy_output.innerText = "Copy"
+
     let start_text;
     if (!input.value == "") {
         start_text = input.value.toLowerCase();
@@ -212,14 +216,35 @@ function updateRegex() {
     output.innerText = end_text;
 }
 
+reset_settings.onclick = function() {
+    checkbox_num.checked = true;
+    checkbox_sym.checked = true;
+    checkbox_let.checked = true;
+    checkbox_emo.checked = true;
+    checkbox_dub.checked = true;
+    checkbox_mul.checked = false;
+    checkbox_whi.checked = false;
+    checkbox_vow.checked = false;
+    checkbox_pmc.checked = true;
+    updateRegex();
+};
+
+copy_output.onclick = function() {
+    navigator.clipboard.writeText(output.innerText);
+    copy_output.innerText = "Copied!";
+    setTimeout(function() {
+        copy_output.innerText = "Copy"
+    }, 5000);
+}
+
 input.oninput = updateRegex
 checkbox_num.onchange = updateRegex
 checkbox_sym.onchange = updateRegex
 checkbox_let.onchange = updateRegex
+checkbox_emo.onchange = updateRegex
 checkbox_dub.onchange = updateRegex
 checkbox_mul.onchange = updateRegex
-checkbox_vow.onchange = updateRegex
 checkbox_whi.onchange = updateRegex
-checkbox_emo.onchange = updateRegex
+checkbox_vow.onchange = updateRegex
 checkbox_pmc.onchange = updateRegex
 updateRegex()
