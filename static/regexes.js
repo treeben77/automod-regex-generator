@@ -2,13 +2,19 @@ const outputZalgo = document.getElementById("regex-output-zalgo");
 const outputEmojiValue = document.getElementById("emoji-range-value");
 const outputEmoji = document.getElementById("regex-output-emoji");
 const outputLinks = document.getElementById("regex-output-links");
+const outputInlin = document.getElementById("regex-output-inline-links");
+const outputHeadnValue = document.getElementById("headn-range-value");
+const outputHeadn = document.getElementById("regex-output-headn");
 
 const copyZalgo = document.getElementById("copy-regex-zalgo")
 const copyEmoji = document.getElementById("copy-regex-emoji")
 const copyLinks = document.getElementById("copy-regex-links")
+const copyInlin = document.getElementById("copy-regex-inline-links")
+const copyHeadn = document.getElementById("copy-regex-headn")
 
 const checkbox_acc = document.getElementById("filter-accents");
 const emoji_slider = document.getElementById("emoji-range");
+const headn_slider = document.getElementById("headn-range");
 const inc_nonclick = document.getElementById("include-nonclickable");
 
 
@@ -73,3 +79,44 @@ copyLinks.onclick = function() {
 
 inc_nonclick.onchange = updateRegexLinks;
 updateRegexLinks();
+
+function updateRegexInlin() {
+    copyInlin.innerText = "Copy"
+    outputInlin.innerText = "\[.*\]\((?:https?://)[a-z0-9_\-.]*[a-z0-9_-]{2,}\.[a-z]{2,}\)";
+};
+
+copyInlin.onclick = function() {
+    navigator.clipboard.writeText(outputInlin.innerText);
+    copyInlin.innerText = "Copied!";
+    setTimeout(function() {
+        copyInlin.innerText = "Copy"
+    }, 5000);
+}
+
+updateRegexInlin();
+
+function updateRegexHeadn() {
+    copyHeadn.innerText = "Copy";
+    if (headn_slider.value == 4) {
+        outputHeadnValue.innerText = "-";
+    } else {
+        outputHeadnValue.innerText = headn_slider.value;
+    };
+    if (headn_slider.value == 2) {
+        outputHeadn.innerText = `^#\\s.*$`;
+    } else {
+        outputHeadn.innerText = `^#{1,${headn_slider.value - 1}}\\s.*$`;
+    }
+};
+
+copyHeadn.onclick = function() {
+    navigator.clipboard.writeText(outputHeadn.innerText);
+    copyHeadn.innerText = "Copied!";
+    setTimeout(function() {
+        copyHeadn.innerText = "Copy"
+    }, 5000);
+};
+
+headn_slider.onchange = updateRegexHeadn;
+headn_slider.oninput = updateRegexHeadn;
+updateRegexHeadn();

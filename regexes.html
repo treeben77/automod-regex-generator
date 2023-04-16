@@ -39,6 +39,23 @@
                 </div>
             </div>
         </div>
+        <div class="spam-type" id="inline-links">
+            <a class="spam-name">Inline Links</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Blocks links that show custom text and hide the actual link.</p>
+                </div>
+                <div class="grid-item grid-item-right">
+                    Now copy your regex!
+                    <div class="regex-results">
+                        <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
+                        <a class="regex-output" id="regex-output-inline-links">
+                            h[e3]ll[o0] w[o0]rld
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="spam-type" id="zalgo">
             <a class="spam-name">Zalgo</a>
             <div class="grid-row">
@@ -57,6 +74,32 @@
                     <div class="regex-results">
                         <button class="copy-regex" id="copy-regex-zalgo">Copy</button>
                         <a class="regex-output" id="regex-output-zalgo">
+                            h[e3]ll[o0] w[o0]rld
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spam-type" id="headings">
+            <a class="spam-name">Headings</a>
+            <div class="grid-row">
+                <div class="grid-item">
+                    <p>Prevents headings from being used to make message text larger.</p>
+                    <div class="setting">
+                        <div>
+                            Lowest Allowed Heading<br>
+                        </div>
+                        <div class="setting-below-title">
+                            <a id="headn-range-value">-</a> <input type="range" id="headn-range" min="2" max="4" value="4">
+                        </div>
+                        <p>The lowest/biggest heading allowed. Set to max to block all headings.</p>
+                    </div>
+                </div>
+                <div class="grid-item grid-item-right">
+                    Now copy your regex!
+                    <div class="regex-results">
+                        <button class="copy-regex" id="copy-regex-headn">Copy</button>
+                        <a class="regex-output" id="regex-output-headn">
                             h[e3]ll[o0] w[o0]rld
                         </a>
                     </div>
