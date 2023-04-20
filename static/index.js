@@ -92,6 +92,22 @@ const emoReplacers = {
 
 function updateRegex() {
     copy_output.innerText = "Copy"
+    var settings = 0
+    settings += checkbox_num.checked << 0
+    settings += checkbox_sym.checked << 1
+    settings += checkbox_let.checked << 2
+    settings += checkbox_emo.checked << 3
+    settings += checkbox_dub.checked << 4
+    settings += checkbox_mul.checked << 5
+    settings += checkbox_whi.checked << 6
+    settings += checkbox_vow.checked << 7
+    settings += checkbox_pmc.checked << 8
+    console.log(settings)
+
+    location.hash = btoa(JSON.stringify({
+        input: input.value.toLowerCase(),
+        settings: settings
+    })).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '')
 
     let start_text;
     if (!input.value == "") {
@@ -247,4 +263,21 @@ checkbox_mul.onchange = updateRegex
 checkbox_whi.onchange = updateRegex
 checkbox_vow.onchange = updateRegex
 checkbox_pmc.onchange = updateRegex
+
+if (location.hash.length > 1) {
+    const data = JSON.parse(atob(location.hash.replace("#", "").replace('_', '/').replace('-', '+')));
+
+    input.value = data.input;
+
+    checkbox_num.checked = data.settings & 1
+    checkbox_sym.checked = data.settings & 2
+    checkbox_let.checked = data.settings & 4
+    checkbox_emo.checked = data.settings & 8
+    checkbox_dub.checked = data.settings & 16
+    checkbox_mul.checked = data.settings & 32
+    checkbox_whi.checked = data.settings & 64
+    checkbox_vow.checked = data.settings & 128
+    checkbox_pmc.checked = data.settings & 256
+}
+
 updateRegex()

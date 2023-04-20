@@ -127,6 +127,9 @@ body {
     justify-content: left;
     align-items: left;
     margin-top: 15px;
+}
+
+.regex-results .regex-output {
     margin-bottom: 20px;
 }
 
