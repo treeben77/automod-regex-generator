@@ -217,12 +217,24 @@ body {
     background-color: #202020;
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
 }
 
 .spam-name {
     text-align: left;
     float: left;
+}
+
+.spam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-flow: dense;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.spam-type {
+    min-width: 300px;
 }
 
 .spam-type .grid-item {

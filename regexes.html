@@ -15,119 +15,121 @@
     </div>
     <div class="content">
         <p>Customize and copy pre-built regexes for Discord's AutoMod that can block links, emoji spam, and more!</p>
-        <div class="spam-type" id="links">
-            <a class="spam-name">All Links</a>
-            <div class="grid-row">
-                <div class="grid-item">
-                    <p>Blocks all links. You should use this with allow keywords.</p>
-                    <div class="setting">
-                        <div class="title-with-setting">
-                            <input type="checkbox" id="include-nonclickable" checked>
-                            Include Non-Clickable Links
+        <div class="spam-grid">
+            <div class="spam-type" id="links">
+                <a class="spam-name">All Links</a>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <p>Blocks all links. You should use this with allow keywords.</p>
+                        <div class="setting">
+                            <div class="title-with-setting">
+                                <input type="checkbox" id="include-nonclickable" checked>
+                                Include Non-Clickable Links
+                            </div>
+                            <p>When enabled, this will block links without the <code>https://</code> but <a class="warning-description">this can cause some false negatives.</a></p>
                         </div>
-                        <p>When enabled, this will block links without the <code>https://</code> but <a class="warning-description">this can cause some false negatives.</a></p>
                     </div>
-                </div>
-                <div class="grid-item grid-item-right">
-                    Now copy your regex!
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-links">Copy</button>
-                        <a class="regex-output" id="regex-output-links">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
+                    <div class="grid-item grid-item-right">
+                        Now copy your regex!
+                        <div class="regex-results">
+                            <button class="copy-regex" id="copy-regex-links">Copy</button>
+                            <a class="regex-output" id="regex-output-links">
+                                h[e3]ll[o0] w[o0]rld
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="spam-type" id="inline-links">
-            <a class="spam-name">Inline Links</a>
-            <div class="grid-row">
-                <div class="grid-item">
-                    <p>Blocks links that show custom text and hide the actual link.</p>
-                </div>
-                <div class="grid-item grid-item-right">
-                    Now copy your regex!
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
-                        <a class="regex-output" id="regex-output-inline-links">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
+            <div class="spam-type" id="inline-links">
+                <a class="spam-name">Inline Links</a>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <p>Blocks links that show custom text and hide the actual link.</p>
+                    </div>
+                    <div class="grid-item grid-item-right">
+                        Now copy your regex!
+                        <div class="regex-results">
+                            <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
+                            <a class="regex-output" id="regex-output-inline-links">
+                                h[e3]ll[o0] w[o0]rld
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="spam-type" id="zalgo">
-            <a class="spam-name">Zalgo</a>
-            <div class="grid-row">
-                <div class="grid-item">
-                    <p>Zalgo text is designed to make the message obfucated, and be very annoying for other members. (e.g. h̵̅ͅȇ̴̫l̸͇͌l̸̝͛ȍ̴̱) <a class="warning-description">Some complex emojis will be blocked.</a></p>
-                    <div class="setting">
-                        <div class="title-with-setting">
-                            <input type="checkbox" id="filter-accents">
-                            Filter Accents
+            <div class="spam-type" id="zalgo">
+                <a class="spam-name">Zalgo</a>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <p>Zalgo text is designed to make the message obfucated, and be very annoying for other members. (e.g. h̵̅ͅȇ̴̫l̸͇͌l̸̝͛ȍ̴̱) <a class="warning-description">Some complex emojis will be blocked.</a></p>
+                        <div class="setting">
+                            <div class="title-with-setting">
+                                <input type="checkbox" id="filter-accents">
+                                Filter Accents
+                            </div>
+                            <p>When disabled, messages with accents will be allowed (e.g. héllo) but this can also cause some false negatives.</p>
                         </div>
-                        <p>When disabled, messages with accents will be allowed (e.g. héllo) but this can also cause some false negatives.</p>
                     </div>
-                </div>
-                <div class="grid-item grid-item-right">
-                    Now copy your regex!
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-zalgo">Copy</button>
-                        <a class="regex-output" id="regex-output-zalgo">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="spam-type" id="headings">
-            <a class="spam-name">Headings</a>
-            <div class="grid-row">
-                <div class="grid-item">
-                    <p>Prevents headings from being used to make message text larger.</p>
-                    <div class="setting">
-                        <div>
-                            Lowest Allowed Heading<br>
+                    <div class="grid-item grid-item-right">
+                        Now copy your regex!
+                        <div class="regex-results">
+                            <button class="copy-regex" id="copy-regex-zalgo">Copy</button>
+                            <a class="regex-output" id="regex-output-zalgo">
+                                h[e3]ll[o0] w[o0]rld
+                            </a>
                         </div>
-                        <div class="setting-below-title">
-                            <a id="headn-range-value">-</a> <input type="range" id="headn-range" min="2" max="4" value="4">
-                        </div>
-                        <p>The lowest/biggest heading allowed. Set to max to block all headings.</p>
-                    </div>
-                </div>
-                <div class="grid-item grid-item-right">
-                    Now copy your regex!
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-headn">Copy</button>
-                        <a class="regex-output" id="regex-output-headn">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="spam-type" id="emoji-spam">
-            <a class="spam-name">Emoji Spam</a>
-            <div class="grid-row">
-                <div class="grid-item">
-                    <p>Prevents emoji spam in messages by setting a limit for each message.</p>
-                    <div class="setting">
-                        <div>
-                            Maximum Allowed Emojis<br>
+            <div class="spam-type" id="headings">
+                <a class="spam-name">Headings</a>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <p>Prevents headings from being used to make message text larger.</p>
+                        <div class="setting">
+                            <div>
+                                Lowest Allowed Heading<br>
+                            </div>
+                            <div class="setting-below-title">
+                                <a id="headn-range-value">-</a> <input type="range" id="headn-range" min="2" max="4" value="4">
+                            </div>
+                            <p>The lowest/biggest heading allowed. Set to max to block all headings.</p>
                         </div>
-                        <div class="setting-below-title">
-                            <a id="emoji-range-value">0</a> <input type="range" id="emoji-range" min="0" max="12" value="6">
+                    </div>
+                    <div class="grid-item grid-item-right">
+                        Now copy your regex!
+                        <div class="regex-results">
+                            <button class="copy-regex" id="copy-regex-headn">Copy</button>
+                            <a class="regex-output" id="regex-output-headn">
+                                h[e3]ll[o0] w[o0]rld
+                            </a>
                         </div>
-                        <p>Maximum number of standarad and custom emojis per message. The highest possible is 12 due to Discord limitations.</p>
                     </div>
                 </div>
-                <div class="grid-item grid-item-right">
-                    Now copy your regex!
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-emoji">Copy</button>
-                        <a class="regex-output" id="regex-output-emoji">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
+            </div>
+            <div class="spam-type" id="emoji-spam">
+                <a class="spam-name">Emoji Spam</a>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <p>Prevents emoji spam in messages by setting a limit for each message.</p>
+                        <div class="setting">
+                            <div>
+                                Maximum Allowed Emojis<br>
+                            </div>
+                            <div class="setting-below-title">
+                                <a id="emoji-range-value">0</a> <input type="range" id="emoji-range" min="0" max="12" value="6">
+                            </div>
+                            <p>Maximum number of standarad and custom emojis per message. The highest possible is 12 due to Discord limitations.</p>
+                        </div>
+                    </div>
+                    <div class="grid-item grid-item-right">
+                        Now copy your regex!
+                        <div class="regex-results">
+                            <button class="copy-regex" id="copy-regex-emoji">Copy</button>
+                            <a class="regex-output" id="regex-output-emoji">
+                                h[e3]ll[o0] w[o0]rld
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
