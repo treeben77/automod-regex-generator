@@ -8,10 +8,14 @@
 </head>
 <body>
     <div class="banner-notification banner-critical" id="javascript-disabled">
-        Please enable JavaScript to generate regexes.
+        Enable JavaScript to generate regexes.
+    </div>
+    <div class="banner-notification banner-error" id="javascript-disabled-secondary">
+        Enable JavaScript to generate regexes.
     </div>
     <script>
         document.getElementById("javascript-disabled").hidden = true;
+        document.getElementById("javascript-disabled-secondary").hidden = true;
     </script>
     <div class="header">
         <a href="/automod-regex-generator/">AutoMod Regex Generator</a>

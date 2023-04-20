@@ -4,7 +4,7 @@ body {
     margin: 0px;
     color: white;
     font-family: 'Poppins', sans-serif;
-    background-color: #252525
+    background-color: #252525;
 }
 
 .banner-notification {
@@ -16,6 +16,10 @@ body {
 
 .banner-critical {
     position: fixed;
+    background-color: #ff5500;
+}
+
+.banner-error {
     background-color: #ff5500;
 }
 
