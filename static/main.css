@@ -7,6 +7,18 @@ body {
     background-color: #252525
 }
 
+.banner-notification {
+    text-align: center;
+    padding: 5px;
+    background-color: #151515;
+    width: 100%;
+}
+
+.banner-critical {
+    position: fixed;
+    background-color: #ff5500;
+}
+
 .header {
     padding: 20px;
     padding-left: 40px;
