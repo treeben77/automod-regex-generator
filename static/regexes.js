@@ -82,7 +82,7 @@ updateRegexLinks();
 
 function updateRegexInlin() {
     copyInlin.innerText = "Copy"
-    outputInlin.innerText = "\[.*\]\(<?(?:https?://)[a-z0-9_\\-.]*[a-z0-9_\\-]{2,}\\.[a-z]{2,}>?\)";
+    outputInlin.innerText = "\\[.*\\]\\(<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]{2,}\\.[a-z]{2,}.*>?\\)";
 };
 
 copyInlin.onclick = function() {
