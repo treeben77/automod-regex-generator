@@ -13,6 +13,7 @@ const checkbox_mul = document.getElementById("multi-char")
 const checkbox_vow = document.getElementById("vowel-less")
 const checkbox_whi = document.getElementById("whitespace")
 const checkbox_pmc = document.getElementById("part-match")
+const checkbox_duc = document.getElementById("dedup-char")
 
 const numReplacers = {
     "i": ["1"],
@@ -102,6 +103,7 @@ function updateRegex() {
     settings += checkbox_whi.checked << 6
     settings += checkbox_vow.checked << 7
     settings += checkbox_pmc.checked << 8
+    settings += checkbox_duc.checked << 9
     console.log(settings)
 
     location.hash = btoa(JSON.stringify({
@@ -128,13 +130,19 @@ function updateRegex() {
             previous_charater_combo++;
             continue;
         } else if (previous_charater_combo > 0 & previous_charater_modified) {
-            if (checkbox_dub.checked) {
+            if (checkbox_dub.checked  && !checkbox_duc.checked) {
                 end_text = end_text.concat(`{${previous_charater_combo + 1},}`);
+            } else if (checkbox_duc.checked && checkbox_dub.checked) {
+                end_text = end_text.concat(`+`)
+            } else if (checkbox_duc.checked && !checkbox_dub.checked) {
+                end_text = end_text.concat(`{1, ${previous_charater_combo + 1}}`)
             } else {
-                end_text = end_text.concat(`{${previous_charater_combo + 1}, ${previous_charater_combo + 1}}`);
+                end_text = end_text.concat(`{${previous_charater_combo + 1}}`);
             }
             previous_charater_combo = 0;
             previous_charater_modified = false;
+        } else if (i != 0 & previous_charater_combo == 0 & checkbox_dub.checked) {
+            end_text = end_text.concat(`+`);
         };
 
         if (checkbox_num.checked) {
@@ -210,14 +218,22 @@ function updateRegex() {
     };
 
     if (previous_charater_combo > 0 & previous_charater_modified) {
-        if (checkbox_dub.checked) {
+        if (checkbox_dub.checked  && !checkbox_duc.checked) {
             end_text = end_text.concat(`{${previous_charater_combo + 1},}`);
+        } else if (checkbox_duc.checked && checkbox_dub.checked) {
+            end_text = end_text.concat(`+`)
+        } else if (checkbox_duc.checked && !checkbox_dub.checked) {
+            end_text = end_text.concat(`{0, ${previous_charater_combo + 1}}`)
         } else {
-            end_text = end_text.concat(`{${previous_charater_combo + 1}, ${previous_charater_combo + 1}}`);
+            end_text = end_text.concat(`{${previous_charater_combo + 1}}`);
         }
         previous_charater_combo = 0;
         previous_charater_modified = false;
+    } else if (previous_charater_combo == 0 & checkbox_dub.checked) {
+        end_text = end_text.concat(`+`);
     };
+
+
     if (!checkbox_pmc.checked) {
         end_text = `(\\A|\\s)${end_text}(\\z|\\s)`
     }
@@ -241,6 +257,7 @@ reset_settings.onclick = function() {
     checkbox_whi.checked = false;
     checkbox_vow.checked = false;
     checkbox_pmc.checked = true;
+    checkbox_duc.checked = false;
     updateRegex();
 };
 
@@ -262,6 +279,7 @@ checkbox_mul.onchange = updateRegex
 checkbox_whi.onchange = updateRegex
 checkbox_vow.onchange = updateRegex
 checkbox_pmc.onchange = updateRegex
+checkbox_duc.onchange = updateRegex
 
 if (location.hash.length > 1) {
     const data = JSON.parse(atob(location.hash.replace("#", "").replace('_', '/').replace('-', '+')));
@@ -277,6 +295,7 @@ if (location.hash.length > 1) {
     checkbox_whi.checked = data.settings & 64
     checkbox_vow.checked = data.settings & 128
     checkbox_pmc.checked = data.settings & 256
+    checkbox_duc.checked = data.settings & 512
 }
 
 updateRegex()

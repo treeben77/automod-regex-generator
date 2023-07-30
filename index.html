@@ -54,8 +54,8 @@
                     <p>Prevents replacing a character with regional indicator emojis. (e.g. hell🅾️)</p>
                 </div>
                 <div class="grid-item">
-                    <input type="checkbox" id="double-spm" checked> Double-letter Spam
-                    <p>Prevents spamming characters which are normally next to each other multiple times. (e.g. hellllo)</p>
+                    <input type="checkbox" id="double-spm" checked> Letter Spam
+                    <p>Prevents spamming the same character being spammed multiple times (e.g. hellllo)</p>
                 </div>
                 <div class="grid-item">
                     <input type="checkbox" id="multi-char"> Multi Character
@@ -70,6 +70,10 @@
                     <p>Prevents removing the vowels. (e.g. hllo) <a class="warning-description">This could cause false positives!</a></p>
                 </div>
                 <div class="grid-item">
+                    <input type="checkbox" id="dedup-char"> Character Deduplication
+                    <p>Prevents repeated characters from being removed unto one (e.g. helo) <a class="warning-description">This could cause false positives for some small words!</a></p>
+                </div>
+                <div class="grid-item">
                     <input type="checkbox" id="part-match" checked> Partial Matches
                     <p>Prevents adding text to the start or end of word. (e.g. hello!) <a class="warning-description">This could cause false positives for some small words!</a></p>
                 </div>
@@ -79,7 +83,7 @@
         <div class="step">
             <p>3. Copy the generated regex!</p>
             <div class="error-box" id="regex-error-toolong" hidden>
-                This Regex is too long! You need to shorten it by shorten the word or disabling some customizer settings, Double-letter Spam makes the regex smaller but everything else makes it longer.
+                This Regex is too long! You need to shorten it by shortening the word or disabling some customizer settings!
             </div>
             <div class="regex-results">
                 <button id="copy-regex">Copy</button>
