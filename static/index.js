@@ -179,11 +179,10 @@ function updateRegex() {
 
             if (replacer == null) {break}
 
-            if (replacer.replace("\\", "").length > 1 & checkbox_mul.checked) {
+            if (replacer.replaceAll("\\", "").length > 1 & (checkbox_mul.checked || /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g.test(replacer))) {
                 is_all_one_char = false
-            } else if (/\p{Extended_Pictographic}/u.test(replacer)) {
-                //pass
-            } else if (replacer.length > 1) {
+            } else if (replacer.replaceAll("\\", "").length > 1) {
+                console.log('o7', replacer, '>>', replacer.replaceAll("\\", ""), replacer.replaceAll("\\", "").length, /\p{Extended_Pictographic}/u.test(replacer))
                 replacers.splice(i2, 1)
                 i2--
             }
