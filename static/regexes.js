@@ -2,6 +2,7 @@ const outputZalgo = document.getElementById("regex-output-zalgo");
 const outputEmojiValue = document.getElementById("emoji-range-value");
 const outputEmoji = document.getElementById("regex-output-emoji");
 const outputLinks = document.getElementById("regex-output-links");
+const outputInvit = document.getElementById("regex-output-invite-links");
 const outputInlin = document.getElementById("regex-output-inline-links");
 const outputHeadnValue = document.getElementById("headn-range-value");
 const outputHeadn = document.getElementById("regex-output-headn");
@@ -9,6 +10,7 @@ const outputHeadn = document.getElementById("regex-output-headn");
 const copyZalgo = document.getElementById("copy-regex-zalgo")
 const copyEmoji = document.getElementById("copy-regex-emoji")
 const copyLinks = document.getElementById("copy-regex-links")
+const copyInvit = document.getElementById("copy-regex-invite-links")
 const copyInlin = document.getElementById("copy-regex-inline-links")
 const copyHeadn = document.getElementById("copy-regex-headn")
 
@@ -16,6 +18,7 @@ const checkbox_acc = document.getElementById("filter-accents");
 const emoji_slider = document.getElementById("emoji-range");
 const headn_slider = document.getElementById("headn-range");
 const inc_nonclick = document.getElementById("include-nonclickable");
+const inc_3prtyinv = document.getElementById("include-3rdparty");
 
 
 function updateRegexZalgo() {
@@ -94,6 +97,26 @@ copyInlin.onclick = function() {
 }
 
 updateRegexInlin();
+
+function updateRegexInvit() {
+    copyInvit.innerText = "Copy"
+    if (inc_3prtyinv.checked) {
+        outputInvit.innerText = "(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord\\.gg/[a-z0-9-_]+)|(?:https?://)?(?:www\\.)?(?:dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(gg|io|me|li|id)))/[a-z0-9-_]+"
+    } else {
+        outputInvit.innerText = "(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord\\.gg/[a-z0-9-_]+)";
+    }
+};
+
+copyInvit.onclick = function() {
+    navigator.clipboard.writeText(outputInvit.innerText);
+    copyInvit.innerText = "Copied!";
+    setTimeout(function() {
+        copyInvit.innerText = "Copy"
+    }, 5000);
+}
+
+updateRegexInvit();
+inc_3prtyinv.onchange = updateRegexInvit
 
 function updateRegexHeadn() {
     copyHeadn.innerText = "Copy";
