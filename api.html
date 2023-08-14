@@ -1,0 +1,212 @@
+<head>
+    <title>Regexes - AutoMod Regex Generator</title>
+    <meta property="og:title" content="Regexes - AutoMod Regex Generator"/>
+    <meta property="og:description" content="Block messages with zalgo, too many emojis, too many newlines, and more!"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no"/>
+
+    <link rel="stylesheet" href="static/main.css">
+</head>
+<body>
+    <div class="banner-notification banner-critical" id="javascript-disabled">
+        Enable JavaScript to generate regexes.
+    </div>
+    <div class="banner-notification banner-error" id="javascript-disabled-secondary">
+        Enable JavaScript to generate regexes.
+    </div>
+    <script>
+        document.getElementById("javascript-disabled").hidden = true;
+        document.getElementById("javascript-disabled-secondary").hidden = true;
+    </script>
+    <div class="header">
+        <a href="/automod-regex-generator/">AutoMod Regex Generator</a>
+        <div class="pages">
+            <a href="regexes.html">Regexes</a>
+            <b href="api.html">API</b>
+        </div>
+    </div>
+    <div class="content">
+        <p>The API allows developers to use AutoMod Regex Generator in their owns projects, such as another Discord bot.</p>
+        <p class="p-warning">The API is still in beta, and might not work correctly. The endpoints are unlikely to change, however expect this page, and the rules to change. Please report bugs on the GitHub repository issues tab.</p>
+        <h4>API Rules</h4>
+        <ol>
+            <li>Don't use the API to create another website with the purpose of just generating regexes.</li>
+            <li>Don't sell access to the API, or include it in other APIs.</li>
+            <li>You must include a link to the AutoMod Regex Generator website in your program, such as in the footer of the command used to create a regex.</li>
+            <li>Use a custom user agent with a method of contact (Discord server, email address, etc.)</li>
+            <li>These rules can change at any time.</li>
+        </ol>
+        <p>Thank you for following the API rules. Below is the API Reference, and a button to fork the postman collection.</p>
+        <div class="postman-run-button"
+        data-postman-action="collection/fork"
+        data-postman-visibility="public"
+        data-postman-var-1="23497300-499876db-c2e1-4dfe-aab6-1917f608dff1"
+        data-postman-collection-url="entityId=23497300-499876db-c2e1-4dfe-aab6-1917f608dff1&entityType=collection&workspaceId=f1a95117-ef95-44ef-8282-5bc49bb8ca09"></div>
+        <script type="text/javascript">
+        (function (p,o,s,t,m,a,n) {
+            !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+            !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+            (n = o.createElement("script")),
+            (n.id = s+t), (n.async = 1), (n.src = m), n
+            ));
+        }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+        </script>
+
+        <p>The API's base URL is:</p>
+        <code>
+            https://automod-regex-generator-api.treeben77.xyz/
+        </code>
+        <h4>Generate Leetspeak Regex</h4>
+        <p class="endpoint-path">GET <code>/leetspeak/:text</code></p>
+        <p class="endpoint-description">Generates a regex based in the text provided and settings, just like the generator on the home page.</p>
+        <p class="endpoint-heading">Parameters</p>
+        <table class="endpoint-parameters" cellspacing="0" cellpadding="0">
+            <tr>
+              <th class="endpoint-table-field">Field</th>
+              <th class="endpoint-table-location">Location</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>text</td>
+              <td>Path</td>
+              <td>The text to base the regex on.</td>
+            </tr>
+            <tr>
+              <td>settings</td>
+              <td>Argument</td>
+              <td>The settings bitwise value to configure the regex. Defaults to 287.</td>
+            </tr>
+        </table>
+        <p class="endpoint-heading">JSON Response</p>
+        <table class="endpoint-parameters" cellspacing="0" cellpadding="0">
+            <tr>
+              <th class="endpoint-table-field">Field</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>regex</td>
+              <td>The generated regex.</td>
+            </tr>
+            <tr>
+              <td>too_long</td>
+              <td>Wether the regex is too long for Discord's AutoMod.</td>
+            </tr>
+        </table>
+        <p class="endpoint-heading">Settings Bitwise</p>
+        <table class="endpoint-parameters" cellspacing="0" cellpadding="0">
+            <tr>
+              <th class="endpoint-table-setting">Setting</th>
+              <th>Bitwise</th>
+            </tr>
+            <tr>
+                <td>Number Variants</td>
+                <td>1 (1 << 0)</td>
+            </tr>
+            <tr>
+                <td>Symbol Variants</td>
+                <td>2 (1 << 1)</td>
+            </tr>
+            <tr>
+                <td>Letter Variants</td>
+                <td>4 (1 << 2)</td>
+            </tr>
+            <tr>
+                <td>Emoji Variants</td>
+                <td>8 (1 << 3)</td>
+            </tr>
+            <tr>
+                <td>Double-letter Spam</td>
+                <td>16 (1 << 4)</td>
+            </tr>
+            <tr>
+                <td>Multi Character</td>
+                <td>32 (1 << 5)</td>
+            </tr>
+            <tr>
+                <td>Extra Whitespace</td>
+                <td>64 (1 << 6)</td>
+            </tr>
+            <tr>
+                <td>Vowelless Variants</td>
+                <td>128 (1 << 7)</td>
+            </tr>
+            <tr>
+                <td>Partial Matches</td>
+                <td>256 (1 << 8)</td>
+            </tr>
+            <tr>
+                <td>Character Deduplication</td>
+                <td>512 (1 << 9)</td>
+            </tr>
+        </table>
+        <p>Code Examples</p>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'example-python')">Python</button>
+            <button class="tablinks" onclick="openTab(event, 'example-javascript')">JavaScript</button>
+            <button class="tablinks" onclick="openTab(event, 'example-curl')">CURL</button>
+        </div>
+
+        <div id="example-python" class="tabcontent" hidden>
+            <script src="https://gist.github.com/treeben77/5b6fa297fc7f6b67a5ee16419bb1a54e.js"></script>
+        </div>
+
+        <div id="example-javascript" class="tabcontent" hidden>
+            <script src="https://gist.github.com/treeben77/8355b8e7079b9c76e0a68ed5edf608d4.js"></script>
+        </div>
+
+        <div id="example-curl" class="tabcontent" hidden>
+            <script src="https://gist.github.com/treeben77/2e509222ce8fc6c313653900a9aaf44a.js"></script>
+        </div>
+
+        <script>
+            function openTab(evt, tabName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+                var tabOpened = false;
+              
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                  if (tabName == tabcontent[i].id & tabcontent[i].style.display == "block") {
+                    tabOpened = true;
+                  }
+                  tabcontent[i].style.display = "none";
+                }
+              
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                console.log(tabOpened)
+              
+                if (!tabOpened) {
+                    document.getElementById(tabName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+              } 
+        </script>
+        <p>I can't wait to see what amazing things you make with the API! If you need help, you can ask in our <a class="link" href="https://discord.gg/4CSc9E5uQy">Discord server</a>!</p>
+        <a id="privacy">
+            <h4>API Privacy</h4>
+            <p>You may link to this section in your privacy policies.</p>
+            <p>AutoMod Regex Generator does not store any data long-term, however the inputed text and the user agent is stored in logs for 1 hour. Some third parties are used to make the service possible:</p>
+            <ul>
+                <li>Requests are proxied through Cloudflare, and are subject to their <a href="https://www.cloudflare.com/privacypolicy/" class="link">Privacy Policy</a></li>
+                <li>Requests are processed with Vercel, and are subject to their <a href="https://vercel.com/legal/privacy-policy/" class="link">Privacy Policy</a></li>
+            </ul>
+        </a>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            AutoMod Regex Generator
+
+            <p>© treeben77 2023. Not affiliated with Discord.</p>
+        </div>
+        <div class="footer-right">
+            <p>Made by <a class="link" href="https://linktr.ee/treeben77">treeben77</a></p>
+            <p>Join the <a class="link" href="https://discord.gg/4CSc9E5uQy">Discord Server</a></p>
+            <p>View the source on <a class="link" href="https://github.com/treeben77/automod-regex-generator">GitHub</a></p>
+        </div>
+    </div>
+</body>
