@@ -66,9 +66,9 @@ updateRegexEmoji()
 function updateRegexLinks() {
     copyLinks.innerText = "Copy"
     if (inc_nonclick.checked) {
-        outputLinks.innerText = "(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]{2,}\\.[a-z]{2,}";
+        outputLinks.innerText = "(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}";
     } else {
-        outputLinks.innerText = "(?:https?://)[a-z0-9_\\-\\.]*[a-z0-9_\\-]{2,}\\.[a-z]{2,}";
+        outputLinks.innerText = "(?:https?://)[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}";
     };
 };
 
@@ -85,7 +85,7 @@ updateRegexLinks();
 
 function updateRegexInlin() {
     copyInlin.innerText = "Copy"
-    outputInlin.innerText = "\\[.*\\]\\(<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]{2,}\\.[a-z]{2,}.*>?\\)";
+    outputInlin.innerText = "\\[.*\\]\\(<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\)";
 };
 
 copyInlin.onclick = function() {
