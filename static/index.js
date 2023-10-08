@@ -16,6 +16,7 @@ const checkbox_vow = document.getElementById("vowel-less")
 const checkbox_whi = document.getElementById("whitespace")
 const checkbox_pmc = document.getElementById("part-match")
 const checkbox_duc = document.getElementById("dedup-char")
+const checkbox_uni = document.getElementById("filter-uni")
 
 function updateRegex() {
     copy_output.innerText = "Copy"
@@ -30,6 +31,7 @@ function updateRegex() {
     settings += checkbox_vow.checked << 7
     settings += checkbox_pmc.checked << 8
     settings += checkbox_duc.checked << 9
+    settings += checkbox_uni.checked << 10
 
     location.hash = btoa(JSON.stringify({
         input: input.value.toLowerCase(),
@@ -60,6 +62,7 @@ reset_settings.onclick = function() {
     checkbox_vow.checked = false;
     checkbox_pmc.checked = true;
     checkbox_duc.checked = false;
+    checkbox_uni.checked = false;
     updateRegex();
 };
 
@@ -82,6 +85,7 @@ checkbox_whi.onchange = updateRegex
 checkbox_vow.onchange = updateRegex
 checkbox_pmc.onchange = updateRegex
 checkbox_duc.onchange = updateRegex
+checkbox_uni.onchange = updateRegex
 
 if (location.hash.length > 1) {
     const data = JSON.parse(atob(location.hash.replace("#", "").replace('_', '/').replace('-', '+')));
@@ -98,6 +102,7 @@ if (location.hash.length > 1) {
     checkbox_vow.checked = data.settings & 128
     checkbox_pmc.checked = data.settings & 256
     checkbox_duc.checked = data.settings & 512
+    checkbox_uni.checked = data.settings & 1024
 }
 
 updateRegex()
