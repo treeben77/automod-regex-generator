@@ -1,3 +1,25 @@
+<!-- MIT License
+
+Copyright (c) 2023 - 2024 treeben77
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. -->
+
 <head>
     <title>Regexes - AutoMod Regex Generator</title>
     <meta property="og:title" content="Regexes - AutoMod Regex Generator"/>
@@ -47,19 +69,6 @@
                     </div>
                 </div>
             </div>
-            <div class="spam-type" id="inline-links">
-                <a class="spam-name">Inline Links</a>
-                <div class="grid-row">
-                    <p>Blocks links that show custom text and hide the actual link.</p>
-                    
-                    <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
-                        <a class="regex-output" id="regex-output-inline-links">
-                            h[e3]ll[o0] w[o0]rld
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div class="spam-type" id="invite-links">
                 <a class="spam-name">Invite Links</a>
                 <div class="grid-row">
@@ -79,6 +88,28 @@
                         </a>
                     </div>
                     <p class="regex-credits">Credits to <a class="link" href="https://github.com/Firecul" target="_blank" rel="noopener noreferrer">Firecul</a> for some of the third party invite URLs.</p>
+                </div>
+            </div>
+            <div class="spam-type" id="emoji-spam">
+                <a class="spam-name">Emoji Spam</a>
+                <div class="grid-row">
+                    <p>Prevents emoji spam in messages by setting a limit for each message.</p>
+                    <div class="setting">
+                        <div>
+                            Maximum Allowed Emojis<br>
+                        </div>
+                        <div class="setting-below-title">
+                            <a id="emoji-range-value">0</a> <input type="range" id="emoji-range" min="0" max="12" value="6">
+                        </div>
+                        <p>Maximum number of standarad and custom emojis per message. The highest possible is 12 due to Discord limitations.</p>
+                    </div>
+
+                    <div class="regex-results">
+                        <button class="copy-regex" id="copy-regex-emoji">Copy</button>
+                        <a class="regex-output" id="regex-output-emoji">
+                            h[e3]ll[o0] w[o0]rld
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="spam-type" id="zalgo">
@@ -123,23 +154,27 @@
                     </div>
                 </div>
             </div>
-            <div class="spam-type" id="emoji-spam">
-                <a class="spam-name">Emoji Spam</a>
+            <div class="spam-type" id="inline-links">
+                <a class="spam-name">Inline Links</a>
                 <div class="grid-row">
-                    <p>Prevents emoji spam in messages by setting a limit for each message.</p>
-                    <div class="setting">
-                        <div>
-                            Maximum Allowed Emojis<br>
-                        </div>
-                        <div class="setting-below-title">
-                            <a id="emoji-range-value">0</a> <input type="range" id="emoji-range" min="0" max="12" value="6">
-                        </div>
-                        <p>Maximum number of standarad and custom emojis per message. The highest possible is 12 due to Discord limitations.</p>
+                    <p>Blocks links that show custom text and hide the actual link.</p>
+                    
+                    <div class="regex-results">
+                        <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
+                        <a class="regex-output" id="regex-output-inline-links">
+                            h[e3]ll[o0] w[o0]rld
+                        </a>
                     </div>
+                </div>
+            </div>
+            <div class="spam-type" id="email-address">
+                <a class="spam-name">Email Addresses</a>
+                <div class="grid-row">
+                    <p>Prevents email addresses from being sent.</p>
 
                     <div class="regex-results">
-                        <button class="copy-regex" id="copy-regex-emoji">Copy</button>
-                        <a class="regex-output" id="regex-output-emoji">
+                        <button class="copy-regex" id="copy-regex-email">Copy</button>
+                        <a class="regex-output" id="regex-output-email">
                             h[e3]ll[o0] w[o0]rld
                         </a>
                     </div>
@@ -153,7 +188,7 @@
         <div class="footer-left">
             AutoMod Regex Generator
 
-            <p>© treeben77 2023. Not affiliated with Discord.</p>
+            <p>© treeben77 2024. Not affiliated with Discord.</p>
         </div>
         <div class="footer-right">
             <p>Made by <a class="link" href="https://treeben77.xyz">treeben77</a></p>

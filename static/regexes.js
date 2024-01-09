@@ -1,3 +1,25 @@
+// MIT License
+
+// Copyright (c) 2023 - 2024 treeben77
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 const outputZalgo = document.getElementById("regex-output-zalgo");
 const outputEmojiValue = document.getElementById("emoji-range-value");
 const outputEmoji = document.getElementById("regex-output-emoji");
@@ -6,13 +28,15 @@ const outputInvit = document.getElementById("regex-output-invite-links");
 const outputInlin = document.getElementById("regex-output-inline-links");
 const outputHeadnValue = document.getElementById("headn-range-value");
 const outputHeadn = document.getElementById("regex-output-headn");
+const outputEmail = document.getElementById("regex-output-email");
 
-const copyZalgo = document.getElementById("copy-regex-zalgo")
-const copyEmoji = document.getElementById("copy-regex-emoji")
-const copyLinks = document.getElementById("copy-regex-links")
-const copyInvit = document.getElementById("copy-regex-invite-links")
-const copyInlin = document.getElementById("copy-regex-inline-links")
-const copyHeadn = document.getElementById("copy-regex-headn")
+const copyZalgo = document.getElementById("copy-regex-zalgo");
+const copyEmoji = document.getElementById("copy-regex-emoji");
+const copyLinks = document.getElementById("copy-regex-links");
+const copyInvit = document.getElementById("copy-regex-invite-links");
+const copyInlin = document.getElementById("copy-regex-inline-links");
+const copyHeadn = document.getElementById("copy-regex-headn");
+const copyEmail = document.getElementById("copy-regex-email");
 
 const checkbox_acc = document.getElementById("filter-accents");
 const emoji_slider = document.getElementById("emoji-range");
@@ -143,3 +167,18 @@ copyHeadn.onclick = function() {
 headn_slider.onchange = updateRegexHeadn;
 headn_slider.oninput = updateRegexHeadn;
 updateRegexHeadn();
+
+function updateRegexEmail() {
+    copyEmail.innerText = "Copy"
+    outputEmail.innerText = "[a-z0-9_\\-\\.\\+]+@[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}";
+};
+
+copyEmail.onclick = function() {
+    navigator.clipboard.writeText(outputEmail.innerText);
+    copyEmail.innerText = "Copied!";
+    setTimeout(function() {
+        copyEmail.innerText = "Copy"
+    }, 5000);
+}
+
+updateRegexEmail();
