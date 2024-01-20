@@ -66,13 +66,13 @@ checkbox_acc.onchange = updateRegexZalgo;
 updateRegexZalgo();
 
 function updateRegexEmoji() {
-    copyEmoji.innerText = "Copy"
-    outputEmojiValue.innerText = emoji_slider.value
+    copyEmoji.innerText = "Copy";
+    outputEmojiValue.innerText = emoji_slider.value;
     if (emoji_slider.value == 0) {
-        outputEmoji.innerText = `<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f})`
+        outputEmoji.innerText = `<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f})`;
     } else {
-        outputEmail.innerText = `(?s)(?i)((<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f}).*){${+emoji_slider.value + 1},}`
-    }
+        outputEmoji.innerText = `d(?s)(?i)((<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f}).*){${+emoji_slider.value + 1},}`;
+    };
 };
 
 copyEmoji.onclick = function() {
