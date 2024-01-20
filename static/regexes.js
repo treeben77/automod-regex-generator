@@ -69,9 +69,9 @@ function updateRegexEmoji() {
     copyEmoji.innerText = "Copy"
     outputEmojiValue.innerText = emoji_slider.value
     if (emoji_slider.value == 0) {
-        outputEmoji.innerText = `<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|\\p{Emoji}`
+        outputEmoji.innerText = `<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f})`
     } else {
-        outputEmoji.innerText = `((?s)(<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|\\p{Emoji}).*){${+emoji_slider.value + 1},}`
+        outputEmail.innerText = `(?s)(?i)((<a?:[a-z_0-9]+:[0-9]+>|\\p{Extended_Pictographic}|[\\u{1F1E6}-\\u{1F1FF}]|[0-9#\\*]\\u{fe0f}).*){${+emoji_slider.value + 1},}`
     }
 };
 
