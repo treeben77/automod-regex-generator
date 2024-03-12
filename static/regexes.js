@@ -85,7 +85,7 @@ const regex_types = [
         generator: function(settings) {
             const main_invites = `(?:https?:\\/\\/)?(?:www\\.|ptb\\.|canary\\.)?(?:discord(?:app)?\\.(?:(?:com|gg)\\/(?:invite|servers)\\/+[a-z0-9-_]+)|discord\\.gg\\/+[a-z0-9-_]+)`;
             if (settings.third_party.checked) {
-                return `${main_invites}|discord\\.gg/[a-z0-9-_]+)|(?:https?://)?(?:www\\.)?(?:dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(gg|io|me|li|id))|disboard\\.org)/[a-z0-9-_/]+`;
+                return `${main_invites}|(?:https?://)?(?:www\\.)?(?:dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(gg|io|me|li|id))|disboard\\.org)/[a-z0-9-_/]+`;
             } else {
                 return main_invites;
             };
