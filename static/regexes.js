@@ -84,9 +84,9 @@ const regex_types = [
         output: document.getElementById("regex-output-invite-links"),
         generator: function(settings) {
             if (settings.third_party.checked) {
-                return "(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers))|dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(?:gg|io|me|li|id))|disboard\\.org)/[a-z0-9-_]+";
+                return "(?:https?://)?(?:www.|ptb.|canary.)?(?:dsc\\.gg|invite\\.gg|discord\\.link|(?:discord\\.(?:gg|io|me|li|id))|disboard\\.org|discord(?:app)?\\.(?:com|gg)/(?:invite|servers))/[a-z0-9-_]+";
             } else {
-                return `(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord\\.gg/[a-z0-9-_]+)`;
+                return `(?:https?://)?(?:www.|ptb.|canary.)?(?:discord\.gg|discord(?:app)?\\.(?:com|gg)/(?:invite|servers))/[a-z0-9-_]+`;
             };
         },
         setting_elements: {
