@@ -83,26 +83,10 @@ const regex_types = [
         copy_btn: document.getElementById("copy-regex-invite-links"),
         output: document.getElementById("regex-output-invite-links"),
         generator: function(settings) {
-            const main_invites = `(?:https?:\\/\\/)?(?:www\\.|ptb\\.|canary\\.)?(?:discord(?:app)?\\.(?:(?:com|gg)\\/(?:invite|servers)\\/+[a-z0-9-_]+)|discord\\.gg\\/+[a-z0-9-_]+)`;
             if (settings.third_party.checked) {
-                return `${main_invites}|discord\\.gg/[a-z0-9-_]+)|(?:https?://)?(?:www\\.)?(?:dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(gg|io|me|li|id))|disboard\\.org)/[a-z0-9-_/]+`;
+                return "(?:https?://)?(?:www.|ptb.|canary.)?(?:dsc\\.gg|invite\\.gg|discord\\.link|(?:discord\\.(?:gg|io|me|li|id))|disboard\\.org|discord(?:app)?\\.(?:com|gg)/(?:invite|servers))/[a-z0-9-_]+";
             } else {
-                return main_invites;
-            };
-        },
-        setting_elements: {
-            third_party: document.getElementById("include-3rdparty")
-        }
-    },
-    {
-        name: "invite-links",
-        copy_btn: document.getElementById("copy-regex-invite-links"),
-        output: document.getElementById("regex-output-invite-links"),
-        generator: function(settings) {
-            if (settings.third_party.checked) {
-                return "(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord\\.gg/[a-z0-9-_]+)|(?:https?://)?(?:www\\.)?(?:dsc\\.gg|invite\\.gg+|discord\\.link|(?:discord\\.(gg|io|me|li|id))|disboard\\.org)/[a-z0-9-_/]+";
-            } else {
-                return `(?:https?://)?(?:www.|ptb.|canary.)?(?:discord(?:app)?\\.(?:(?:com|gg)/(?:invite|servers)/[a-z0-9-_]+)|discord\\.gg/[a-z0-9-_]+)`;
+                return `(?:https?://)?(?:www.|ptb.|canary.)?(?:discord\\.gg|discord(?:app)?\\.(?:com|gg)/(?:invite|servers))/[a-z0-9-_]+`;
             };
         },
         setting_elements: {
