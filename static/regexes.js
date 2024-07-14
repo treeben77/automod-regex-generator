@@ -74,7 +74,7 @@ const regex_types = [
         copy_btn: document.getElementById("copy-regex-inline-links"),
         output: document.getElementById("regex-output-inline-links"),
         generator: function(settings) {
-            return `\\[.*\\]\\(<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\)`
+            return `\\[.*\\n*.*\\]\\(\\s*<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\s*\\)`
         },
         setting_elements: {}
     },
