@@ -158,10 +158,29 @@ SOFTWARE. -->
                 <a class="spam-name">Inline Links</a>
                 <div class="grid-row">
                     <p>Blocks links that show custom text and hide the actual link.</p>
-                    
+                    <div class="setting">
+                        <div class="title-with-setting">
+                            <input type="checkbox" id="filter-disguised-only">
+                            Disguised URLs only
+                        </div>
+                        <p>When enabled, it will only block inline links that appear as a domain. For example: [example.com](treeben77.xyz)</p>
+                    </div>
                     <div class="regex-results">
                         <button class="copy-regex" id="copy-regex-inline-links">Copy</button>
                         <a class="regex-output" id="regex-output-inline-links">
+                            h[e3]ll[o0] w[o0]rld
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="spam-type" id="subtext">
+                <a class="spam-name">Subtext</a>
+                <div class="grid-row">
+                    <p>Blocks messages which contain subtext, which is smaller text that may be used to create convincing fake offical Discord notices.</p>
+                    
+                    <div class="regex-results">
+                        <button class="copy-regex" id="copy-regex-subtext">Copy</button>
+                        <a class="regex-output" id="regex-output-subtext">
                             h[e3]ll[o0] w[o0]rld
                         </a>
                     </div>

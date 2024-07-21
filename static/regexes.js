@@ -74,7 +74,22 @@ const regex_types = [
         copy_btn: document.getElementById("copy-regex-inline-links"),
         output: document.getElementById("regex-output-inline-links"),
         generator: function(settings) {
-            return `\\[.*\\n*.*\\]\\(\\s*<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\s*\\)`
+            if (settings.disguisedonly.checked) {
+                return `\\[.*[a-z0-9_\\-]+\\.[a-z]{2,}[\\/]?.*\\]\\(<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\)`
+            } else {
+                return `\\[.*\\n*.*\\]\\(\\s*<?(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}.*>?\\s*\\)`
+            };
+        },
+        setting_elements: {
+            disguisedonly: document.getElementById("filter-disguised-only")
+        }
+    },
+    {
+        name: "subtext",
+        copy_btn: document.getElementById("copy-regex-subtext"),
+        output: document.getElementById("regex-output-subtext"),
+        generator: function(settings) {
+            return `(?m)^-#\\s.*$`
         },
         setting_elements: {}
     },
@@ -108,7 +123,7 @@ const regex_types = [
             if (settings.slider.value == 2) {
                 return `^#\\s.*$`;
             } else {
-                return `^#{1,${settings.slider.value - 1}}\\s.*$`;
+                return `^(> )?#{1,${settings.slider.value - 1}}\\s.*$`;
             }
         },
         setting_elements: {
