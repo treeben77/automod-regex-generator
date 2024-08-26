@@ -60,9 +60,9 @@ const regex_types = [
         output: document.getElementById("regex-output-links"),
         generator: function(settings) {
             if (settings.nonclick.checked) {
-                return `(?:https?://)?[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}`;
+                return `(?:https?://?)?(\\S*@)?[\\\\a-z0-9_\\-\\.\\%]*[a-z0-9_\\-%]+(\\.|%2e)[a-z(%[a-z0-9])]{2,}`;
             } else {
-                return `(?:https?://)[a-z0-9_\\-\\.]*[a-z0-9_\\-]+\\.[a-z]{2,}`;
+                return `(?:https?://?)(\\S*@)?[\\\\a-z0-9_\\-\\.\\%]*[a-z0-9_\\-%]+(\\.|%2e)[a-z(%[a-z0-9])]{2,}`;
             };
         },
         setting_elements: {

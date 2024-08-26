@@ -231,13 +231,14 @@ body {
     margin: 0;
 }
 
-.footer .footer-left p {
+.footer .footer-left .footer-copyright {
     margin-top: 10px;
 }
 
 .footer .footer-left {
     display: inline-block;
     width: 50%;
+    margin-top: -9px;
 }
 
 .footer .footer-right {
@@ -284,6 +285,12 @@ body {
     color: #d3d3d3;
     margin: 0;
     padding-right: 20px;
+}
+
+.grid-row .post-regex-p {
+    margin-top: -10px;
+    padding-bottom: 15px;
+    color: #a8a8a8;
 }
 
 .grid-row .regex-credits {
