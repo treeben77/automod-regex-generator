@@ -104,7 +104,7 @@ body {
     display: inline-block;
     vertical-align: middle;
     white-space: normal;
-    width: calc(100% - 110px);
+    width: calc(100% - 114px);
 }
 
 .step .right-element {
@@ -118,7 +118,12 @@ body {
     padding: 10px;
     border-style: none;
     border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
     height: 30px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
 }
 
 .text-input:focus {
@@ -222,7 +227,7 @@ body {
 
 .footer {
     background-color: #151515;
-    padding: 40px;
+    padding: 30px 40px;
 }
 
 .footer p {
@@ -238,13 +243,13 @@ body {
 .footer .footer-left {
     display: inline-block;
     width: 50%;
-    margin-top: -9px;
 }
 
 .footer .footer-right {
     float: right;
     width: 50%;
     text-align: right;
+    margin-top: 8.89px;
 }
 
 .link {
