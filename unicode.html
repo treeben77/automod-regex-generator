@@ -1,0 +1,131 @@
+<!-- MIT License
+
+Copyright (c) 2023 - 2024 treeben77
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. -->
+
+<head>
+    <title>Unicode - AutoMod Regex Generator</title>
+    <meta property="og:title" content="AutoMod Regex Generator"/>
+    <meta property="og:description" content="Quickly generate a regex for Discord's AutoMod that will protect your community from using leetspeak to bypass keyword rules."/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no"/>
+
+    <link rel="stylesheet" href="static/main.css">
+</head>
+<body>
+    <div class="banner-notification banner-critical" id="javascript-disabled">
+        Enable JavaScript to generate regexes.
+    </div>
+    <div class="banner-notification banner-error" id="javascript-disabled-secondary">
+        Enable JavaScript to generate regexes.
+    </div>
+    <script>
+        document.getElementById("javascript-disabled").hidden = true;
+        document.getElementById("javascript-disabled-secondary").hidden = true;
+    </script>
+    <div class="header">
+        <a href="/automod-regex-generator/">AutoMod Regex Generator</a>
+        <div class="pages">
+            <a href="regexes.html">Regexes</a>
+            <b href="unicode.html">Unicode</b>
+        </div>
+    </div>
+    <div class="content">
+        <p>Generate a regex for Discord's AutoMod that will protect your community from using certain types of unicode to bypass AutoMod.</p>
+        
+        <div class="step">
+            <div class="title-with-right-element">
+                <p>1. Select the types of chracters you'd like to <select id="whitelist-mode">
+                    <option selected>allow</option>
+                    <option>block</option>
+                </select>.</p>
+                <button class="right-element" id="reset-settings">Reset Settings</button>
+            </div>
+            <div class="grid-row smaller-grid-items">
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-let" checked> Letters
+                    <p>Capital and lowercase English letters, doesn't include accents.</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-num" checked> Numbers
+                    <p>All numbers 0 to 9.</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-asc" checked> ASCII Symbols
+                    <p>All ASCII symbols excluding letters and numbers (e.g. $, ?, ], ")</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-sym" checked> Extended Symbols
+                    <p>Other common symbols used by mobile phones, etc (e.g. ©, ±, ”)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-acc" checked> European Accents
+                    <p>Capital and lowercase letters with European accents (e.g. è, ö, ñ, ß)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-emo" checked> Emojis
+                    <p>Emojis and stuff idk</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-cyr"> Cyrillic Characters
+                    <p>Characters from the Cyrillic script (e.g. П, А, Д) <a class="warning-description">These characters can look the same as Latin characters.</a></p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-kaj"> Kanji Characters
+                    <p>Characters used in Japanese and Chinese (e.g. ん, 例, 好)</p>
+                </div>
+                <div class="grid-item">
+                    <input type="checkbox" id="filter-arb"> Arabic Characters
+                    <p>Characters used in Arabric (e.g. ا, ي, ت)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <p>3. Copy the generated regex!</p>
+            <div class="error-box" id="regex-error-toolong" hidden>
+                This Regex is too long! You need to shorten it by shortening the word or disabling some customizer settings!
+            </div>
+            <div class="regex-results">
+                <button id="copy-regex">Copy</button>
+                <a id="regex-output">
+                    h[e3]ll[o0] w[o0]rld
+                </a>
+            </div>
+        </div>
+
+        <p>You can also visit the <a class="link" href="regexes.html">Regexes page</a> to find regexes that block links, zalgo, and more.</p>
+
+        <p>If you're a developer, you can check out the <a class="link" href="api.html">API</a> to intergrate the generator into your own creations!</p>
+
+        <script src="static/unicode.js" type="module"></script>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            AutoMod Regex Generator
+
+            <p class="footer-copyright">© treeben77 2024. Not affiliated with Discord.<br><a class="link" href="https://donate.stripe.com/cN23g53tk2U273G001">Donate</a> to the primary maintainer ❤️</p>
+        </div>
+        <div class="footer-right">
+            <p>Made by <a class="link" href="https://treeben77.xyz">treeben77</a></p>
+            <p>Join the <a class="link" href="https://discord.gg/4CSc9E5uQy">Discord Server</a></p>
+            <p>View the source on <a class="link" href="https://github.com/treeben77/automod-regex-generator">GitHub</a></p>
+        </div>
+    </div>
+</body>

@@ -191,6 +191,15 @@ button {
     color: #f38688;
 }
 
+.smaller-grid-items {
+    flex-basis: 20%;
+}
+
+.smaller-grid-items .grid-item {
+    flex-basis: 20%;
+    padding-bottom: 15px;
+}
+
 .grid-row {
     margin-top: 15px;
     margin: 10px auto;
@@ -435,6 +444,16 @@ h4 {
     border-radius: 5px;
     border: #ff5500 1px solid;
     padding: 5px;
+}
+
+select {
+    font-family: 'Poppins', sans-serif;
+    background-color: #151515;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 0 5px;
 }
 
 @media (pointer:coarse) {
