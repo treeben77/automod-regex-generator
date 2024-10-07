@@ -434,6 +434,16 @@ h4 {
     padding: 5px;
 }
 
+select {
+    font-family: 'Poppins', sans-serif;
+    background-color: #151515;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 0 5px;
+}
+
 @media (pointer:coarse) {
     .header {
         padding: 15px;

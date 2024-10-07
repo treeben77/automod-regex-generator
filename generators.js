@@ -272,43 +272,46 @@ function generateLeetspeakRegex(text, settings) {
 
 const REGEX_CHARACTER_SETS = [
     {
-        setting_bitwise: 1,
-        value: function(settings) {
-            if (!(settings & 4)) {
-                return "a-zA-Z";
-            } else {return ""};
-        }
-    },
-    {
         setting_bitwise: 2,
         value: function(settings) {
-            if (!(settings & 4)) {
-                return "0-9";
+            if (!(settings & 8)) {
+                return "a-zA-Z";
             } else {return ""};
-        }
+        },
+        essential: true
     },
     {
         setting_bitwise: 4,
         value: function(settings) {
-            if (settings & 1 && settings & 2) {
+            if (!(settings & 8)) {
+                return "0-9";
+            } else {return ""};
+        },
+        essential: true
+    },
+    {
+        setting_bitwise: 8,
+        value: function(settings) {
+            if (settings & 2 && settings & 4) {
                 return "\\p{ASCII}";
-            } else if (settings & 1) {
-                return "\\p{ASCII}--[0-9]";
             } else if (settings & 2) {
+                return "\\p{ASCII}--[0-9]";
+            } else if (settings & 4) {
                 return "\\p{ASCII}--[a-zA-Z]";
             }  else {
                 return "\\p{ASCII}--[a-zA-Z0-9]";
             }
-        }
-    },
-    {
-        setting_bitwise: 8,
-        value: "€…†‡‘’“”•–—™¢£¤¥¦§©®°±²³µ¶¹"
+        },
+        essential: true
     },
     {
         setting_bitwise: 16,
+        value: "€…†‡‘’“”•–—™¢£¤¥¦§©®°±²³µ¶¹"
+    },
+    {
+        setting_bitwise: 32,
         value: function(settings) {
-            if (settings & 8) {
+            if (settings & 16) {
                 return "À-ÿŸ¿¡"
             } else {
                 return "À-ÿŸ"
@@ -316,39 +319,54 @@ const REGEX_CHARACTER_SETS = [
         }
     },
     {
-        setting_bitwise: 32,
+        setting_bitwise: 64,
         value: "\\p{Extended_Pictographic}\\u{200d}\\u{1f3fb}-\\u{1f3ff}\\u{1f1e6}-\\u{1f1ff}\\u{fe0f}"
     },
     {
-        setting_bitwise: 64,
+        setting_bitwise: 128,
         value: "\\u{0400}-\\u{04ff}\\u{0500}-\\u{052f}\\u{a640}-\\u{a69f}\\u{1e030}-\\u{1e08f}\\u{1d2b}-\\u{1d78}\\u{fe2e}-\\u{fe2f}"
     },
     {
-        setting_bitwise: 128,
+        setting_bitwise: 256,
         value: "\\u{3000}-\\u{303f}\\u{3040}-\\u{309f}\\u{30a0}-\\u{30ff}\\u{ff00}-\\u{ff9f}\\u{4e00}-\\u{9faf}\\u{3400}-\\u{4dbf}"
     },
     {
-        setting_bitwise: 256,
+        setting_bitwise: 512,
         value: "\\u{0621}-\\u{064b}\\u{0660}-\\u{0669}"
     }
 ]
 
-function generateCharacterTypeRegex(text, settings) {
+function generateCharacterTypeRegex(settings) {
     let character_sets = [];
+    let violates_essential = false;
 
     for (var i = 0; i < REGEX_CHARACTER_SETS.length; i++) {
         let character_set = REGEX_CHARACTER_SETS[i];
 
         if (settings & character_set.setting_bitwise) {
             if (typeof character_set.value === 'function') {
-                character_sets.push(character_set.value(settings))
+                character_sets.push(character_set.value(settings));
             } else {
-                character_sets.push(character_set.value)
+                character_sets.push(character_set.value);
+            };
+            if (character_set.essential && !(settings & 1)) {
+                violates_essential
             }
         }
     };
 
-    let end_text = `[^${character_sets.join('')}]`;
+    let end_text
+    if (settings & 1) {
+        end_text = `[^${character_sets.join('')}]`;
+        if (!character_sets.length) {
+            end_text = `.`;
+        };
+    } else {
+        end_text = `[${character_sets.join('')}]`;
+        if (!character_sets.length) {
+            end_text = ``;
+        };
+    }
 
     return {
         regex: end_text,

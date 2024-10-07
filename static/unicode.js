@@ -23,7 +23,7 @@
 import { generateCharacterTypeRegex } from "../generators.js";
 
 const output = document.getElementById("regex-output");
-const input = document.getElementById("word-input");
+const whitelist_mode = document.getElementById("whitelist-mode");
 const error_length = document.getElementById("regex-error-toolong");
 const reset_settings = document.getElementById("reset-settings");
 const copy_output = document.getElementById("copy-regex");
@@ -42,28 +42,29 @@ function updateRegex() {
     copy_output.innerText = "Copy"
 
     var settings = 0;
-    settings += checkbox_let.checked << 0
-    settings += checkbox_num.checked << 1
-    settings += checkbox_asc.checked << 2
-    settings += checkbox_sym.checked << 3
-    settings += checkbox_acc.checked << 4
-    settings += checkbox_emo.checked << 5
-    settings += checkbox_cyr.checked << 6
-    settings += checkbox_kaj.checked << 7
-    settings += checkbox_arb.checked << 8
+    settings += (whitelist_mode.value == "allow") << 0
+    settings += checkbox_let.checked << 1
+    settings += checkbox_num.checked << 2
+    settings += checkbox_asc.checked << 3
+    settings += checkbox_sym.checked << 4
+    settings += checkbox_acc.checked << 5
+    settings += checkbox_emo.checked << 6
+    settings += checkbox_cyr.checked << 7
+    settings += checkbox_kaj.checked << 8
+    settings += checkbox_arb.checked << 9
 
-    // location.hash = btoa(JSON.stringify({
-    //     input: input.value.toLowerCase(),
-    //     settings: settings
-    // })).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '')
+    location.hash = btoa(JSON.stringify({
+        s: settings
+    })).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '')
     
-    let generated = generateCharacterTypeRegex('', settings)
+    let generated = generateCharacterTypeRegex(settings)
 
     error_length.hidden = !generated.too_long
     output.innerText = generated.regex;
 }
 
 reset_settings.onclick = function() {
+    whitelist_mode.value = "allow"
     checkbox_let.checked = true;
     checkbox_num.checked = true;
     checkbox_asc.checked = true;
@@ -94,23 +95,25 @@ checkbox_emo.onchange = updateRegex
 checkbox_cyr.onchange = updateRegex
 checkbox_kaj.onchange = updateRegex
 checkbox_arb.onchange = updateRegex
+whitelist_mode.onchange = updateRegex
 
-// if (location.hash.length > 1) {
-//     const data = JSON.parse(atob(location.hash.replace("#", "").replace('_', '/').replace('-', '+')));
+if (location.hash.length > 1) {
+    const data = JSON.parse(atob(location.hash.replace("#", "").replace('_', '/').replace('-', '+')));
 
-//     input.value = data.input;
-
-//     checkbox_num.checked = data.settings & 1
-//     checkbox_sym.checked = data.settings & 2
-//     checkbox_let.checked = data.settings & 4
-//     checkbox_emo.checked = data.settings & 8
-//     checkbox_dub.checked = data.settings & 16
-//     checkbox_mul.checked = data.settings & 32
-//     checkbox_whi.checked = data.settings & 64
-//     checkbox_vow.checked = data.settings & 128
-//     checkbox_pmc.checked = data.settings & 256
-//     checkbox_duc.checked = data.settings & 512
-//     checkbox_uni.checked = data.settings & 1024
-// }
+    checkbox_let.checked = data.s & 2
+    checkbox_num.checked = data.s & 4
+    checkbox_asc.checked = data.s & 8
+    checkbox_sym.checked = data.s & 16
+    checkbox_acc.checked = data.s & 32
+    checkbox_emo.checked = data.s & 64
+    checkbox_cyr.checked = data.s & 128
+    checkbox_kaj.checked = data.s & 256
+    checkbox_arb.checked = data.s & 512
+    if (data.s & 1) {
+        whitelist_mode.value = "allow"
+    } else {
+        whitelist_mode.value = "block"
+    }
+}
 
 updateRegex()

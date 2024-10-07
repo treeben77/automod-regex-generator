@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. -->
 
 <head>
-    <title>AutoMod Regex Generator</title>
+    <title>Unicode - AutoMod Regex Generator</title>
     <meta property="og:title" content="AutoMod Regex Generator"/>
     <meta property="og:description" content="Quickly generate a regex for Discord's AutoMod that will protect your community from using leetspeak to bypass keyword rules."/>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no"/>
@@ -43,20 +43,18 @@ SOFTWARE. -->
         <a href="/automod-regex-generator/">AutoMod Regex Generator</a>
         <div class="pages">
             <a href="regexes.html">Regexes</a>
-            <a href="api.html">API</a>
+            <b href="unicode.html">Unicode</b>
         </div>
     </div>
     <div class="content">
-        <p>Generate regexes for Discord's AutoMod that will protect your community from using special characters to bypass auto moderation and send hard to read messages.</p>
+        <p>Generate a regex for Discord's AutoMod that will protect your community from using certain types of unicode to bypass AutoMod.</p>
         
-        <!-- <div class="step">
-            <p>1. insert bitwise</p>
-            <input type="number" class="text-input" id="word-input" value="hello world">
-        </div> -->
-
         <div class="step">
             <div class="title-with-right-element">
-                <p>1. Choose your allowed character classes.</p>
+                <p>1. Select the types of chracters you'd like to <select id="whitelist-mode">
+                    <option selected>allow</option>
+                    <option>block</option>
+                </select>.</p>
                 <button class="right-element" id="reset-settings">Reset Settings</button>
             </div>
             <div class="grid-row smaller-grid-items">
@@ -100,7 +98,7 @@ SOFTWARE. -->
         </div>
 
         <div class="step">
-            <p>2. Copy the generated regex!</p>
+            <p>3. Copy the generated regex!</p>
             <div class="error-box" id="regex-error-toolong" hidden>
                 This Regex is too long! You need to shorten it by shortening the word or disabling some customizer settings!
             </div>
@@ -114,13 +112,15 @@ SOFTWARE. -->
 
         <p>You can also visit the <a class="link" href="regexes.html">Regexes page</a> to find regexes that block links, zalgo, and more.</p>
 
-        <script src="static/allowcharacters.js" type="module"></script>
+        <p>If you're a developer, you can check out the <a class="link" href="api.html">API</a> to intergrate the generator into your own creations!</p>
+
+        <script src="static/unicode.js" type="module"></script>
     </div>
     <div class="footer">
         <div class="footer-left">
             AutoMod Regex Generator
 
-            <p>© treeben77 2024. Not affiliated with Discord.</p>
+            <p class="footer-copyright">© treeben77 2024. Not affiliated with Discord.<br><a class="link" href="https://donate.stripe.com/cN23g53tk2U273G001">Donate</a> to the primary maintainer ❤️</p>
         </div>
         <div class="footer-right">
             <p>Made by <a class="link" href="https://treeben77.xyz">treeben77</a></p>
