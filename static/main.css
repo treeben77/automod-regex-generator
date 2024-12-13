@@ -258,7 +258,7 @@ button {
     float: right;
     width: 50%;
     text-align: right;
-    margin-top: 8.89px;
+    /* margin-top: 8.89px; */
 }
 
 .link {
