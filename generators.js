@@ -139,7 +139,7 @@ function generateLeetspeakRegex(text, settings) {
             previous_charater_combo++;
             continue;
         } else if (previous_charater_combo > 0 & previous_charater_modified) {
-            if ((settings & 16) != 0) {
+            if ((settings & 16) != 1) {
                 end_text = end_text.concat(`{${previous_charater_combo + 1},}`);
             } else if ((settings & 512) != 0 && (settings & 16) != 0) {
                 end_text = end_text.concat(`+`)
@@ -209,7 +209,7 @@ function generateLeetspeakRegex(text, settings) {
             if (replacer.replaceAll("\\", "").length > 1 & ((settings & 32) != 0 ||
             /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g.test(replacer))) {
                 is_all_one_char = false
-            } else if (replacer.replaceAll("\\", "").length > 1) {
+            } else if (replacer.replaceAll("\\", "").length == 1) {
                 // pass
             } else if (replacer.length > 1) {
                 replacers.splice(i2, 1)
