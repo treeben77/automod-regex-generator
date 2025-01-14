@@ -1,6 +1,6 @@
 // MIT License
 
-// Copyright (c) 2023 - 2024 treeben77
+// Copyright (c) 2023 - 2025 treeben77
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
